@@ -196,10 +196,18 @@ img{
   font-family: 'IBM Plex Mono', monospace;
 }
 
+.js-scroll{
+  opacity: 0;
+    transition: opacity .3s ease-in-out;
 
+}
 
+.js-scroll.ativo{
+  opacity: 1;
+}
 
 /*    CLASSES E ANIMAÇÕES    */
+
 
 .animais-descricao section.ativo{
   display: block;
@@ -244,6 +252,7 @@ img{
   }
   
 }
+
 
 
 
