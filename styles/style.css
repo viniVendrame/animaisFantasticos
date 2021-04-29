@@ -6,6 +6,7 @@
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   color: #252525;
+  scroll-behavior: smooth;
 }
 
 body{
@@ -73,8 +74,13 @@ img{
 
 .animais-lista{
   grid-column: 2;
-  height: 370px;
+  height: 400px;
   overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.animais-lista li{
+  scroll-snap-align: start;
 }
 
 .animais-lista::-webkit-scrollbar {
@@ -96,6 +102,7 @@ img{
 }
 
 .animais-descricao section{
+  display: none;
   margin-bottom: 32px;
 }
 
@@ -129,10 +136,11 @@ img{
 }
 
 .faq-list dt{
+  cursor: pointer;
   color: #EE5544;
   font-size: 14px;
-  text-transform: uppercase;
   font-weight: bold;
+  margin-top: 32px;
   margin-bottom: 8px;
   font-family: 'IBM Plex Mono', monospace;
 }
@@ -149,6 +157,7 @@ img{
 .faq-list dd{
   margin-left: 28px;
   margin-bottom: 32px;
+  display: none;
 }
 
 
@@ -185,4 +194,53 @@ img{
   padding: 20px 10px;
   font-weight: bold;
   font-family: 'IBM Plex Mono', monospace;
+}
+
+
+
+
+/*    CLASSES E ANIMAÇÕES    */
+
+.animais-descricao section.ativo{
+  display: block;
+  animation: tabAnimation 1s forwards;
+}
+
+@keyframes tabAnimation{
+  from{
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.faq-list dt::after{
+  content: '⬎';
+  margin-left: 8px;
+}
+
+.faq-list dt.ativo::after{
+  content: '⬏';
+}
+
+.faq-list dd.ativo{
+  display: block;
+  animation: accordionTab 1s forwards;
+}
+
+@keyframes accordionTab {
+  from{
+    opacity: 0;
+    transform: translate3d(0, -15px, 0);
+    max-height: 0;
+  }
+  to{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    max-height: 400px;
+  }
+  
 }
